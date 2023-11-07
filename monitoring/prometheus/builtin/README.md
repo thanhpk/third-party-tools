@@ -114,7 +114,7 @@ Now, if we want to scrape metrics from above pod, we should configure a job unde
     target_label: __metrics_path__
     regex: (.+)
     # set the scrapping port to the port specified in "prometheus.io/port: <port>" annotation and set address accordingly.
-  - source_labels: [__address__ __meta_kubernetes_pod_annotation_prometheus_io_port]
+  - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
     action: replace
     regex: ([^:]+)(?::\d+)?;(\d+)
     replacement: $1:$2
